@@ -61,7 +61,7 @@ ssh-copy-id root@10.0.0.131
 
 ## Thêm Inventory
 ```
-nano /etc/asible/host
+nano /etc/asible/hosts
 ```
 [Tên khối]
 Địa chỉ IP Client
