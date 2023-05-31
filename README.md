@@ -94,6 +94,18 @@ ansible ubuntu -m ping
     "ping": "pong"
 }
 ```
+### Note 
+- Nếu gặp lỗi permission deny khi check => Trên máy client :
+- In /etc/ssh/sshd_config, if the following line exists, possibly commented out (with a # in front):
+``` PermitRootLogin without-password ```
+- Then change it to the following, uncommenting if needed (remove the # in front):
+```
+PermitRootLogin yes
+``` 
+- And restart SSH:
+```
+sudo service ssh restart
+```
 ## [Ad-Hoc Ansible command  ](https://docs.ansible.com/ansible/latest/command_guide/intro_adhoc.html#why-use-ad-hoc-commands)
 - là các lệnh có thể được chạy riêng lẻ để thực hiện các chức năng nhanh chóng. 
 Lệnh list all các máy con
