@@ -1,0 +1,13 @@
+db_name: maildbdefault
+postfix_myhostname: "mail.anthanh264.site" 
+db_user: mailuser
+db_pwd: mailPWD
+db_host: 127.0.0.1
+mail_domain: anthanh264.site
+mail_domain_upper: "{{ mail_domain | upper }}"
+user_1: "{{ 'test1@' + mail_domain }}"
+user_2: "{{ 'test2@' + mail_domain }}"
+group_1: "{{ 'group-test@' + mail_domain }}"
+group_mem: "{{ user_1 + ',' + user_2 }}"
+dovecot_mail_path: /var/mail/
+dovecot_mail_location: "{{ dovecot_mail_path + '/' + mail_domain }}"

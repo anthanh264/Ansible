@@ -1,0 +1,4 @@
+db_name: maildbdefault
+postfix_myhostname: "mail.anthanh264.site" 
+db_user: mailuser
+test_name: macdinh

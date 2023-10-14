@@ -1,0 +1,9 @@
+---
+- hosts: all
+  roles:
+  - role: common
+- hosts: ubuntu  # Define the hosts from your hosts file
+  become: true
+  roles:
+    #- install_packages 
+    - config_mysql

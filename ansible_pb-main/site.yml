@@ -1,0 +1,10 @@
+---
+- hosts: all
+  roles:
+  - role: common
+- hosts: ubuntu
+  become: true
+  roles:
+    - config_mysql
+    
+

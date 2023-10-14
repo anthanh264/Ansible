@@ -1,0 +1,7 @@
+---
+mysql_pwd: MacDinh
+# Default variables for the install_packages role
+packages:
+  - dialog
+  - mariadb-server
+  - mariadb-client

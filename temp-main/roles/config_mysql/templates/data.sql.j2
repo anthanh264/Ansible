@@ -1,0 +1,7 @@
+USE {{ db_name }};
+INSERT INTO virtual_Status (status_id,status_desc) VALUES ('1','Enable');
+INSERT INTO virtual_Domains (domain_name,domain_desc) VALUES ('{{ mail_domain }}','{{ mail_domain_upper }}');
+INSERT INTO virtual_Users (domain_name,email,password,fullname,department) VALUES ('{{ mail_domain }}','{{ user_1 }}',TO_BASE64(UNHEX(SHA2('test1', 512))),'Test 1','Test');
+INSERT INTO virtual_Users (domain_name,email,password,fullname,department) VALUES ('{{ mail_domain }}','{{ user_2 }}',TO_BASE64(UNHEX(SHA2('test2', 512))),'Test 2','Test');
+INSERT INTO virtual_Aliases (domain_name,source,destination) VALUES ('{{ mail_domain }}','{{ group_mem }}','{{ group_mem }}');
+EXIT;

@@ -1,0 +1,26 @@
+---
+- name: Create database
+  command: mysql --execute="CREATE DATABASE IF NOT EXISTS {{ db_name }};"
+
+- name: Create user
+  command: mysql --execute="CREATE USER IF NOT EXISTS '{{ db_user }}'@'localhost' IDENTIFIED BY '{{ db_pwd }}';"
+
+- name: Create grant all privileges
+  command: mysql --execute="GRANT ALL PRIVILEGES ON {{ db_name }}.* TO '{{ db_user }}'@'localhost';"
+  
+- name: Copy stream data file
+  template:
+    src: schema.sql.j2
+    dest: /tmp/schema.sql
+
+- name: execute schema
+  command: mysql --execute="source /tmp/schema.sql"
+
+- name: Copy data database file
+  template:
+    src: data.sql.j2
+    dest: /tmp/data.sql
+
+- name: execute data
+  command: mysql --execute="source /tmp/data.sql"
+  notify: restart dovecot

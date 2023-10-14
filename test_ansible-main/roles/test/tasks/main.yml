@@ -1,0 +1,5 @@
+---
+- name: Copy test
+  template:
+    src: data.txt.j2
+    dest: /tmp/data.txt
