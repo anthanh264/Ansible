@@ -1,0 +1,6 @@
+---
+- hosts: mariadb  
+  roles:
+    - install_mysql_keepalived
+    - config_mysql
+    - config_keepalived

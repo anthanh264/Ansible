@@ -1,0 +1,9 @@
+---
+- name: Config Mysql
+  template:
+    src: 50-server.cnf.j2
+    dest: /etc/mysql/mariadb.conf.d/50-server.cnf
+  
+- name: Initialize Galera Cluster
+  command: galera_new_cluster
+  when: inventory_hostname == 'm1'

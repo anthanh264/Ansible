@@ -1,0 +1,38 @@
+---
+- name: Install rsync and net-tools
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - rsync
+    - net-tools
+  #become: yes
+  #become_user: root
+- name: Add MariaDB GPG key
+  apt_key:
+    url: 'https://mariadb.org/mariadb_release_signing_key.asc'
+  #become: yes
+  #become_user: root
+
+- name: Add MariaDB repository
+  copy:
+    content: 'deb [arch=amd64] http://sfo1.mirrors.digitalocean.com/mariadb/repo/10.5/ubuntu focal main'
+    dest: '/etc/apt/sources.list.d/mariadb.list'
+  #become: yes
+  #become_user: root
+
+- name: Update APT cache
+  apt:
+    update_cache: yes
+  #become: yes
+  #become_user: root
+
+- name: Install MariaDB Server and Keepalived
+  apt:
+    name:
+      - mariadb-server
+      - keepalived
+    state: present
+  #become: yes
+  #become_user: root
+ 
